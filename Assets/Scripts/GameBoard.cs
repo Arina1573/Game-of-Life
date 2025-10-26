@@ -118,8 +118,6 @@ public class GameBoard : MonoBehaviour
 
     {
 
-        // Инициализируем все клетки как мертвые
-
         for (int x = boardBounds.xMin; x < boardBounds.xMax; x++)
 
         {
@@ -188,9 +186,6 @@ public class GameBoard : MonoBehaviour
 
         aliveCells.Clear();
 
-        
-
-        // Переинициализируем сетку
 
         InitializeBoard(currentState);
 
@@ -433,18 +428,13 @@ public class GameBoard : MonoBehaviour
             Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
             Vector3Int cell = currentState.WorldToCell(mousePosition);
-
-            
-
-            Debug.Log($"Mouse: {Input.mousePosition}, World: {mousePosition}, Cell: {cell}, InBounds: {boardBounds.Contains(cell)}");
-
             
 
             if (boardBounds.Contains(cell))
 
             {
 
-                if (Input.GetMouseButton(0)) // ЛКМ
+                if (Input.GetMouseButton(0))
 
             {
 
@@ -454,13 +444,11 @@ public class GameBoard : MonoBehaviour
 
                     AddCell(cell, currentState);
 
-                    Debug.Log("Cell added");
-
                 }
 
                 }
 
-                else if (Input.GetMouseButton(1)) // ПКМ
+                else if (Input.GetMouseButton(1))
 
             {
 
@@ -469,8 +457,6 @@ public class GameBoard : MonoBehaviour
                 {
 
                     RemoveCell(cell, currentState);
-
-                    Debug.Log("Cell removed");
 
                 }
 
@@ -505,5 +491,6 @@ public class GameBoard : MonoBehaviour
         aliveCells.Remove(cell);
 
     }
+
 
 }
